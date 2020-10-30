@@ -2,11 +2,11 @@
 For CPU experiment
 
 #Dependency
-- fdiv
-  - fmul_for_fdiv
-  - finv
-    - finv_const_table
-    - finv_grad_table
+- fdiv (in fdiv.v)
+  - fmul_for_fdiv (in fmul_for_fdiv.v)
+  - finv (in finv.v)
+    - finv_const_table (in finv_table.v)
+    - finv_grad_table (in finv_table.v)
     
 #Notes
 - fmul, fdiv only supports normalized numbers.
