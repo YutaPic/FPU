@@ -2,12 +2,12 @@
 `default_nettype none
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Yuta Fukushima
 // 
-// Create Date: 2020/10/26 22:22:15
-// Design Name: 
+// Create Date: 2020/10/30
+// Design Name: finv
 // Module Name: finv
-// Project Name: 
+// Project Name: C&P
 // Target Devices: 
 // Tool Versions: 
 // Description: 
@@ -19,7 +19,7 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-
+//実は逆数を計算していない(仮数部だけ逆数に変換)
 
 module finv(
     input wire clk,
@@ -39,7 +39,6 @@ module finv(
     reg [23:0] ags;
     reg [7:0] e1, e2;
     reg s1, s2;
-    //wire [7:0] e;
     wire [22:0] m;
     
     (* ram_style = "block" *) finv_const_table u1 (clk, am0, c1);
@@ -67,9 +66,8 @@ module finv(
     end
     
     assign ag = al1 * g1;
-    assign m = c2 - ags;//e2 > 252 ? 0 : c2 - ags;
-    //assign e = e2 > 252 ? 0 : 253 - e2;
-    assign b = {s2, e2, m};//{s2, e, m};
+    assign m = c2 - ags;
+    assign b = {s2, e2, m};
     
 endmodule
 
