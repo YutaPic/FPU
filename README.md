@@ -1,6 +1,3 @@
-# FPU
-For CPU experiment
-
 # Dependency
 - fdiv (in fdiv.v)
   - fmul_for_fdiv (in fmul_for_fdiv.v)
