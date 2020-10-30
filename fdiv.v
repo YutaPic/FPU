@@ -4,9 +4,9 @@
 // Company: 
 // Engineer: Yuta Fukushima
 // 
-// Create Date: 2020/10/19
-// Design Name: fmul 
-// Module Name: fmul
+// Create Date: 2020/10/30
+// Design Name: fdiv
+// Module Name: fdiv
 // Project Name: C&P
 // Target Devices: 
 // Tool Versions: 
@@ -17,12 +17,14 @@
 // Revision:
 // Revision 0.01 - File Created
 //////////////////////////////////////////////////////////////////////////////////
+//100MHz, 4clock
 module fdiv (
     input wire clk, 
-    input wire [31:0] a,
-    input wire [31:0] b,
-    output wire [31:0] q,
-    output wire ovf);
+    input wire [31:0] a, //normal
+    input wire [31:0] b, //normal
+    output wire [31:0] q, //q = a / b
+    output wire ovf //if a value of q is infinity, then ovf = 1
+);
     
     wire [31:0] bi;
     reg [31:0] areg [2:0];
