@@ -4,9 +4,9 @@
 // Company: 
 // Engineer: Yuta Fukushima
 // 
-// Create Date: 2020/10/19
-// Design Name: fmul 
-// Module Name: fmul
+// Create Date: 2020/10/30
+// Design Name: finv_table
+// Module Name: finv_const_table, finv_grad_table
 // Project Name: C&P
 // Target Devices: 
 // Tool Versions: 
@@ -17,6 +17,9 @@
 // Revision:
 // Revision 0.01 - File Created
 //////////////////////////////////////////////////////////////////////////////////
+// finv_const_table : ニュートン法線形近似の定数項(23bit)
+// finv_grad_table : 勾配(13bit)
+// それぞれblockRAM を１ずつ使用
 module finv_const_table (
     input wire clk, 
     input wire [9:0] addr,
