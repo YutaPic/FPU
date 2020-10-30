@@ -4,9 +4,9 @@
 // Company: 
 // Engineer: Yuta Fukushima
 // 
-// Create Date: 2020/10/19
-// Design Name: fmul 
-// Module Name: fmul
+// Create Date: 2020/10/30
+// Design Name: fmul_for_fdiv
+// Module Name: fmul_for_fdiv
 // Project Name: C&P
 // Target Devices: 
 // Tool Versions: 
@@ -17,6 +17,7 @@
 // Revision:
 // Revision 0.01 - File Created
 //////////////////////////////////////////////////////////////////////////////////
+//fdiv専用のfmul (通常のfmulとしては使用不可)
 
 module fmul_for_fdiv(
     input wire [31:0] x1,
@@ -32,7 +33,7 @@ module fmul_for_fdiv(
     wire sy = s1 ^ s2;
     wire [9:0] eyp = e1 + 9'd126 - e2;
     wire [9:0] eypi = eyp + 1 ;
-    wire underflow = eyp[9] /*|| ~(|e1) || ~(|e2)*/ ? 1 : 0;
+    wire underflow = eyp[9] || ~(|e1) /*|| ~(|e2)*/ ? 1 : 0;
     wire ovf_f = (~eyp[9] && eyp[8]) || &(eyp[7:0]) || &(e1) || &(e2) ? 1 : 0;
     wire [47:0] my1 = {1'b1, m1} * {1'b1, m2};
     assign ovf = ovf_f || (my1[47] && &(eypi[7:0]));
