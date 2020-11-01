@@ -2,13 +2,13 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Yuta Fukushima
 // 
 // Create Date: 2020/10/31 22:01:37
 // Design Name: 
 // Module Name: fsqrt
-// Project Name: 
-// Target Devices: 
+// Project Name: C&P
+// Target Devices: KCU105
 // Tool Versions: 
 // Description: 
 // 
