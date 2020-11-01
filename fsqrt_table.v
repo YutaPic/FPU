@@ -4,11 +4,11 @@
 // Company: 
 // Engineer: Yuta Fukushima
 // 
-// Create Date: 2020/10/19
-// Design Name: fmul 
-// Module Name: fmul
+// Create Date: 2020/10/31
+// Design Name: fsqrt_table
+// Module Name: fsqrt_const_table, fsqrt_grad_table
 // Project Name: C&P
-// Target Devices: 
+// Target Devices: KCU105
 // Tool Versions: 
 // Description: 
 // 
