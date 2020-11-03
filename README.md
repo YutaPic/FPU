@@ -1,6 +1,6 @@
 # Performance (KCU105)
-- fmul: 100MHz 2clock (Maximum operating frequency = 160MHz)
-- fsqrt: 100MHz 2clock (Maximum operating frequency = 160MHz)
+- fmul: 100MHz 1clock (Maximum operating frequency = 160MHz)
+- fsqrt: 100MHz 2clock (Pipeline) (Maximum operating frequency = 160MHz)
 - itof: 100MHz 1clock (Maximum operating frequency = 150MHz)
 # Dependency
 - fdiv (fdiv.v)
