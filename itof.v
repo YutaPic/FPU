@@ -6,7 +6,7 @@
 // 
 // Create Date: 2020/11/03 01:15:59
 // Design Name: 
-// Module Name: itof, leadingZeroCounter(This is not same as one for fadd, fsub)
+// Module Name: itof, leadingZeroCounter_for_itof
 // Project Name: C&P
 // Target Devices: 
 // Tool Versions: 
@@ -19,7 +19,7 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-module leadingZeroCounter(
+module leadingZeroCounter_for_itof(
     input wire [30:0] x,
     output wire [4:0] y
     );
@@ -65,7 +65,7 @@ module itof(
     wire s = a[31];
     wire [31:0] a_p = s ? ~a + 1 : a;
     wire [30:0] y = a_p[30:0]; 
-    leadingZeroCounter u1(y, k);
+    leadingZeroCounter_for_itof u1(y, k);
     wire [4:0] shift = k > 6 ? k - 7 : 6 - k; 
     wire [35:0] m0s = y << shift;
     wire [22:0] m0 = m0s[22:0];
