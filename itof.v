@@ -6,7 +6,7 @@
 // 
 // Create Date: 2020/11/03 01:15:59
 // Design Name: 
-// Module Name: itof, leadingZeroCounter(it is not same as one for fadd, fsub)
+// Module Name: itof, leadingZeroCounter(This is not same as one for fadd, fsub)
 // Project Name: C&P
 // Target Devices: 
 // Tool Versions: 
