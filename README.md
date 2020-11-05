@@ -23,4 +23,8 @@
 - fmul, fdiv and fsqrt only support normalized numbers.
   - if the exponent is 0, then the mantissa is set to 0 and the number is regarded as 0.
   - if the exponent is 255, then the mantissa is set to 0 and the number is regarded as infinity.
-- If you enter negative number in fsqrt, 0 will be returned.
+- fsqrt
+  -If you enter negative number in fsqrt, 0 will be returned.
+- ftoi
+  -If you enter more than 2^31, 0x7fffffff will be returned.
+  -If you enter less than -2^31, 0x80000001 will be returned.
