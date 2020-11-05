@@ -2,6 +2,13 @@
 - fmul: 100MHz 1clock (Maximum operating frequency = 160MHz)
 - fsqrt: 100MHz 2clock (Pipeline) (Maximum operating frequency = 160MHz)
 - itof: 100MHz 1clock (Maximum operating frequency = 150MHz)
+- ftoi: 100MHz 1clock 
+
+# Utilization (KCU105)
+- fmul: LUT*53, FF*96, DSP*2
+- itof: LUT*246, FF*64
+- ftoi: LUT*264, FF*64
+
 # Dependency
 - fdiv (fdiv.v)
   - fmul_for_fdiv (fmul_for_fdiv.v)
