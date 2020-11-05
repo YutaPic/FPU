@@ -26,5 +26,5 @@
 - fsqrt
   -If you enter negative number in fsqrt, 0 will be returned.
 - ftoi
-  -If you enter more than 2^31, 0x7fffffff will be returned.
-  -If you enter less than -2^31, 0x80000001 will be returned.
+  - If you enter more than 2^31, 0x7fffffff will be returned.
+  - If you enter less than -2^31, 0x80000001 will be returned.
