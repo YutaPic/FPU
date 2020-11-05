@@ -5,9 +5,9 @@
 - ftoi: 100MHz 1clock 
 
 # Utilization (KCU105)
-- fmul: LUT*53, FF*96, DSP*2
-- itof: LUT*246, FF*64
-- ftoi: LUT*264, FF*64
+- fmul: LUT 53, FF 96, DSP 2
+- itof: LUT 246, FF 64
+- ftoi: LUT 264, FF 64
 
 # Dependency
 - fdiv (fdiv.v)
