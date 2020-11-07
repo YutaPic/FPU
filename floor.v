@@ -2,13 +2,13 @@
 `default_nettype none
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Yuta Fukushima
 // 
 // Create Date: 2020/11/07 11:03:20
 // Design Name: 
 // Module Name: floor
-// Project Name: 
-// Target Devices: 
+// Project Name: C&P
+// Target Devices: KCU105
 // Tool Versions: 
 // Description: 
 // 
