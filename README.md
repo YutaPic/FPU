@@ -1,5 +1,6 @@
 # Performance (KCU105)
-- fadd_kcu 100MHz 1clock
+- fadd (fadd_kcu.v) 100MHz 1clock
+- fsub (fsub_kcu.v) 100MHz 1clock
 - fmul: 100MHz 1clock (Maximum operating frequency = 160MHz)
 - fsqrt: 100MHz 2clock (Pipeline) (Maximum operating frequency = 160MHz)
 - itof: 100MHz 1clock (Maximum operating frequency = 150MHz)
@@ -7,7 +8,8 @@
 - floor: 100MHz 1clock
 
 # Utilization (KCU105)
-- fadd_kcu LUT 583, FF 96
+- fadd (fadd_kcu.v) LUT 583, FF 96
+- fsub (fsub_kcu.v) LUT 577, FF 96
 - fmul: LUT 53, FF 96, DSP 2
 - itof: LUT 246, FF 64
 - ftoi: LUT 264, FF 64
