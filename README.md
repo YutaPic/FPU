@@ -20,7 +20,7 @@
 # Dependency
 - fdiv (fdiv2.v)
   - fmul_for_fdiv (fmul_for_fdiv.v)
-  - finv (finv.v)
+  - finv (finv2.v)
     - finv_const_table (finv_table.v)
     - finv_grad_table (finv_table.v)
 - fsqrt (fsqrt.v)
