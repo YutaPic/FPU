@@ -6,7 +6,7 @@
 // 
 // Create Date: 2020/10/26 22:22:15
 // Design Name: 
-// Module Name: finv
+// Module Name: finv2
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
