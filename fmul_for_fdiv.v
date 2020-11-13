@@ -5,8 +5,8 @@
 // Engineer: Yuta Fukushima
 // 
 // Create Date: 2020/10/19
-// Design Name: fmul 
-// Module Name: fmul
+// Design Name: fmul_for_fdiv
+// Module Name: fmul_for_fdiv
 // Project Name: C&P
 // Target Devices: 
 // Tool Versions: 
@@ -15,7 +15,7 @@
 // Dependencies: 
 // 
 // Revision:
-// Revision 0.01 - File Created
+// Revision 0.02
 //////////////////////////////////////////////////////////////////////////////////
 
 module fmul_for_fdiv(
