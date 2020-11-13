@@ -2,7 +2,7 @@
 - fadd (fadd_kcu.v) 100MHz 1clock
 - fsub (fsub_kcu.v) 100MHz 1clock
 - fmul: 100MHz 1clock (Maximum operating frequency = 160MHz)
-- fdiv: 100MHz 2clock
+- fdiv (fdiv2.v): 100MHz 2clock
 - fsqrt: 100MHz 2clock (Pipeline) (Maximum operating frequency = 160MHz)
 - itof: 100MHz 1clock (Maximum operating frequency = 150MHz)
 - ftoi: 100MHz 1clock 
@@ -12,13 +12,13 @@
 - fadd (fadd_kcu.v) LUT 583, FF 96
 - fsub (fsub_kcu.v) LUT 577, FF 96
 - fmul: LUT 53, FF 96, DSP 2
-- fdiv: 
+- fdiv (fdiv2.v): LUT 103, FF 167, DSP 3
 - itof: LUT 246, FF 64
 - ftoi: LUT 264, FF 64
 - floor LUT 210, FF 64
 
 # Dependency
-- fdiv (fdiv.v)
+- fdiv (fdiv2.v)
   - fmul_for_fdiv (fmul_for_fdiv.v)
   - finv (finv.v)
     - finv_const_table (finv_table.v)
