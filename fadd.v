@@ -35,16 +35,16 @@ module fadd(
     wire [8-1:0] es, ei;
     wire ss;
     wire [5-1:0] de;
-    compSign u2(s1, s2, e1, e2, m1, m2, ms, mi, es, ei,ss, de);
+    compSign_add u2(s1, s2, e1, e2, m1, m2, ms, mi, es, ei,ss, de);
     wire [56-1:0] mia;
     wire tstck;
-    alinePoint u3(mi, de, mia, tstck);
+    alinePoint_add u3(mi, de, mia, tstck);
     wire [8-1:0] eyd;
     wire [27-1:0] myd;
     wire stck;
     wire ovfflag1;
     wire [5-1:0] se;
-    operate u4(s1, s2, tstck, es, ms, mia, eyd, myd, stck, ovfflag1);
+    operate_add u4(s1, s2, tstck, es, ms, mia, eyd, myd, stck, ovfflag1);
     leadingZeroCounter c1(myd, se);
     wire [8-1:0] eyr;
     wire [27-1:0] myf;
@@ -104,7 +104,7 @@ module leadingZeroCounter(
     x[0] ? 25 : 26;
 endmodule
 
-module compSign(
+module compSign_add(
     input wire s1,
     input wire s2,
     input wire [8-1:0] e1,
@@ -139,7 +139,7 @@ module compSign(
     assign ss = sel ? s2 : s1;
 endmodule
     
-module alinePoint(
+module alinePoint_add(
     input wire [25-1:0] mi,
     input wire [5-1:0] de,
     output wire [56-1:0] mia,
@@ -150,7 +150,7 @@ module alinePoint(
  assign tstck = |(mia[28:0]);
 endmodule
 
-module operate(
+module operate_sub(
     input wire s1,
     input wire s2,
     input wire tstck,
