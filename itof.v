@@ -19,6 +19,28 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
+module itof(
+    input wire [31:0] a,
+    output wire [31:0] b
+    );
+    wire [4:0] k;
+    wire s = a[31];
+    wire [31:0] a_p = s ? ~a + 1 : a;
+    wire [30:0] y = a_p[30:0]; 
+    leadingZeroCounter_for_itof u1(y, k);
+    wire [4:0] shift = k > 6 ? k - 7 : 6 - k; 
+    wire [35:0] m0s = y << shift;
+    wire [22:0] m0 = m0s[22:0];
+    wire [7:0] e0 = 8'd157 - {3'b0, k};
+    wire [30:0] m1s = y >> shift;
+    wire [23:0] m1 = m1s[23:0];
+    wire guard = m1[0];
+    wire [23:0] m2 = (m1 >> 1) + guard;
+    wire [7:0] e = k > 6 ? e0 : m2[23] ? e0 + 1 : e0;
+    wire [22:0] m = k > 6 ? m0 : m2[22:0];
+    assign b = (a == 32'b0) ? 32'b0 : (a == 32'h80000000) ? 32'hcf000000 : {s, e, m};
+endmodule
+
 module leadingZeroCounter_for_itof(
     input wire [30:0] x,
     output wire [4:0] y
@@ -57,25 +79,4 @@ module leadingZeroCounter_for_itof(
     x[0] ? 30 : 31;
 endmodule
 
-module itof(
-    input wire [31:0] a,
-    output wire [31:0] b
-    );
-    wire [4:0] k;
-    wire s = a[31];
-    wire [31:0] a_p = s ? ~a + 1 : a;
-    wire [30:0] y = a_p[30:0]; 
-    leadingZeroCounter_for_itof u1(y, k);
-    wire [4:0] shift = k > 6 ? k - 7 : 6 - k; 
-    wire [35:0] m0s = y << shift;
-    wire [22:0] m0 = m0s[22:0];
-    wire [7:0] e0 = 8'd157 - {3'b0, k};
-    wire [30:0] m1s = y >> shift;
-    wire [23:0] m1 = m1s[23:0];
-    wire guard = m1[0];
-    wire [23:0] m2 = (m1 >> 1) + guard;
-    wire [7:0] e = k > 6 ? e0 : m2[23] ? e0 + 1 : e0;
-    wire [22:0] m = k > 6 ? m0 : m2[22:0];
-    assign b = (a == 32'b0) ? 32'b0 : (a == 32'h80000000) ? 32'hcf000000 : {s, e, m};
-endmodule
 `default_nettype wire
