@@ -19,6 +19,59 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
+module fsub(
+    input wire [31:0] x1,
+    input wire [31:0] x2,
+    output wire [31:0] y,
+    output wire ovf
+    );
+    wire s1 = x1[31];
+    wire s2 = x2[31];
+    wire [8-1:0] e1 = x1[30:23];
+    wire [8-1:0] e2 = x2[30:23];
+    wire [23-1:0] m1 = x1[22:0];
+    wire [23-1:0] m2 = x2[22:0];
+    wire [25-1:0] ms, mi;
+    wire [8-1:0] es, ei;
+    wire ss;
+    wire [5-1:0] de;
+    compSign_sub u2(s1, s2, e1, e2, m1, m2, ms, mi, es, ei,ss, de);
+    wire [56-1:0] mia;
+    wire tstck;
+    alinePoint_sub u3(mi, de, mia);
+    wire [8-1:0] eyd;
+    wire [27-1:0] myd;
+    wire stck;
+    wire ovfflag1;
+    wire [5-1:0] se;
+    operate_sub u4(s1, s2, es, ms, mia, eyd, myd, stck, ovfflag1);
+    leadingZeroCounter c1(myd, se);
+    wire [8-1:0] eyr;
+    wire [27-1:0] myf;
+    round1 u5(eyd, myd, se, eyr, myf);
+    wire [25-1:0] myr;
+    round2 u6(myf, stck, s1, s2, myr);
+    wire [8-1:0] ey;
+    wire [23-1:0] my;
+    wire ovfflag2;
+    normalize u7(eyr, myr, ey, my, ovfflag2);
+    wire sy = (ey == 0 && my == 0) ? s1 && s2 : ss;
+    wire nzm1 = |(m1[22:0]);
+    wire nzm2 = |(m2[22:0]);
+    
+    assign y =
+    &(e1) && ~(&(e2)) ? {s1,8'd255,nzm1,m1[21:0]} :
+    &(e2) && ~(&(e1)) ? {~s2,8'd255,nzm2,m2[21:0]} :
+    &(e1) && &(e2) && nzm2 ? {s2,8'd255,1'b1,m2[21:0]} :
+    &(e1) && &(e2) && nzm1 ? {s1,8'd255,1'b1,m1[21:0]} :
+    &(e1) && &(e2) && s1 == s2 ? {s1, 8'd255, 23'b0} :
+    &(e1) && &(e2) ? {1'b1, 8'd255, 1'b1, 22'b0} :
+    {sy, ey, my}/*{sy, ey, my}*/;
+    
+    assign ovf = (ovfflag2 || ovfflag1) && ~(&e1) && ~(&e2) ? 1 : 0;
+    
+endmodule
+
 module leadingZeroCounter(
     input wire [26:0] x,
     output wire [4:0] y
@@ -51,7 +104,7 @@ module leadingZeroCounter(
     x[0] ? 25 : 26;
 endmodule
 
-module compSign(
+module compSign_sub(
     input wire s1,
     input wire s2,
     input wire [8-1:0] e1,
@@ -86,7 +139,7 @@ module compSign(
     assign ss = sel ? ~s2 : s1;
 endmodule
     
-module alinePoint(
+module alinePoint_sub(
     input wire [25-1:0] mi,
     input wire [5-1:0] de,
     output wire [56-1:0] mia
@@ -95,7 +148,7 @@ module alinePoint(
     assign mia = mie >> de;
 endmodule
 
-module operate(
+module operate_add(
     input wire s1,
     input wire s2,
     input wire [8-1:0] es,
@@ -161,59 +214,6 @@ module normalize(
     myr[24] ? 23'b0 :
     |(myr[23:0]) ? myr[22:0] : 23'b0;
     assign ovfflag2 = myr[24] && (&eyri);
-endmodule
-
-module fsub(
-    input wire [31:0] x1,
-    input wire [31:0] x2,
-    output wire [31:0] y,
-    output wire ovf
-    );
-    wire s1 = x1[31];
-    wire s2 = x2[31];
-    wire [8-1:0] e1 = x1[30:23];
-    wire [8-1:0] e2 = x2[30:23];
-    wire [23-1:0] m1 = x1[22:0];
-    wire [23-1:0] m2 = x2[22:0];
-    wire [25-1:0] ms, mi;
-    wire [8-1:0] es, ei;
-    wire ss;
-    wire [5-1:0] de;
-    compSign u2(s1, s2, e1, e2, m1, m2, ms, mi, es, ei,ss, de);
-    wire [56-1:0] mia;
-    wire tstck;
-    alinePoint u3(mi, de, mia);
-    wire [8-1:0] eyd;
-    wire [27-1:0] myd;
-    wire stck;
-    wire ovfflag1;
-    wire [5-1:0] se;
-    operate u4(s1, s2, es, ms, mia, eyd, myd, stck, ovfflag1);
-    leadingZeroCounter c1(myd, se);
-    wire [8-1:0] eyr;
-    wire [27-1:0] myf;
-    round1 u5(eyd, myd, se, eyr, myf);
-    wire [25-1:0] myr;
-    round2 u6(myf, stck, s1, s2, myr);
-    wire [8-1:0] ey;
-    wire [23-1:0] my;
-    wire ovfflag2;
-    normalize u7(eyr, myr, ey, my, ovfflag2);
-    wire sy = (ey == 0 && my == 0) ? s1 && s2 : ss;
-    wire nzm1 = |(m1[22:0]);
-    wire nzm2 = |(m2[22:0]);
-    
-    assign y =
-    &(e1) && ~(&(e2)) ? {s1,8'd255,nzm1,m1[21:0]} :
-    &(e2) && ~(&(e1)) ? {~s2,8'd255,nzm2,m2[21:0]} :
-    &(e1) && &(e2) && nzm2 ? {s2,8'd255,1'b1,m2[21:0]} :
-    &(e1) && &(e2) && nzm1 ? {s1,8'd255,1'b1,m1[21:0]} :
-    &(e1) && &(e2) && s1 == s2 ? {s1, 8'd255, 23'b0} :
-    &(e1) && &(e2) ? {1'b1, 8'd255, 1'b1, 22'b0} :
-    {sy, ey, my}/*{sy, ey, my}*/;
-    
-    assign ovf = (ovfflag2 || ovfflag1) && ~(&e1) && ~(&e2) ? 1 : 0;
-    
 endmodule
 
 `default_nettype wire
