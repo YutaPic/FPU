@@ -150,7 +150,7 @@ module alinePoint_add(
  assign tstck = |(mia[28:0]);
 endmodule
 
-module operate_sub(
+module operate_add(
     input wire s1,
     input wire s2,
     input wire tstck,
