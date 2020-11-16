@@ -32,7 +32,7 @@ module fmul_for_fdiv(
     wire sy = s1 ^ s2;
     wire [9:0] eyp = e1 + 9'd126 - e2;
     wire [9:0] eypi = eyp + 1 ;
-    wire underflow1 = eyp[9] || ~(|eyp[8:0]) ? 1 : 0;//but eypi needs checking here!!!
+    wire underflow1 = eyp[9] || ~(|eyp[8:0]) ? 1 : 0;
     wire underflow2 = eypi[9] || ~(|eypi[8:0]) ? 1 : 0;
     wire ovf_f = (~eyp[9] && eyp[8]) || &(eyp[7:0]) || &(e1) || &(e2) ? 1 : 0;
     wire [47:0] my1 = {1'b1, m1} * {1'b1, m2};
