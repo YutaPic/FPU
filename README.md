@@ -2,7 +2,7 @@
 - fadd (fadd.v) 100MHz 1clock
 - fsub (fsub.v) 100MHz 1clock
 - fmul: 100MHz 1clock (Maximum operating frequency = 160MHz)
-- fdiv (fdiv.v): 100MHz 2clock
+- fdiv (fdiv.v): 100MHz 3clock
 - fsqrt: 100MHz 2clock (Pipeline) (Maximum operating frequency = 160MHz)
 - itof: 100MHz 1clock (Maximum operating frequency = 150MHz)
 - ftoi: 100MHz 1clock 
