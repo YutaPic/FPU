@@ -148,7 +148,7 @@ module alinePoint_sub(
     assign mia = mie >> de;
 endmodule
 
-module operate_add(
+module operate_sub(
     input wire s1,
     input wire s2,
     input wire [8-1:0] es,
