@@ -11,7 +11,7 @@
 
 
 # Utilization (KCU105)
-- fadd (fadd.v) LUT 583, FF 96
+- fadd (fadd.v) LUT 303, FF 96
 - fsub (fsub.v) LUT 577, FF 96
 - fmul: LUT 53, FF 96, DSP 2
 - fdiv (fdiv.v): LUT 103, FF 167, DSP 3
