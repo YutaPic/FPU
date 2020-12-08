@@ -39,6 +39,7 @@ module fless(
     (s_a & s_b) ? 2: 3;
     
     assign c = 
+    (a == 32'h80000000 && b == 32'h00000000) ? 0 :
     (sel_s == 1) ? 1 : 
     (sel_s == 2 && e_a > e_b) ? 1 :
     (sel_s == 3 && e_a < e_b) ? 1 :
