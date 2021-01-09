@@ -9,6 +9,8 @@
 - floor: 100MHz 1clock
 - fless: 100MHz 1clock
 
+-fadd_200 215MHz 2clock
+
 
 # Utilization (KCU105)
 - fadd (fadd.v) LUT 303, FF 96
