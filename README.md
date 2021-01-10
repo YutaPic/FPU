@@ -10,6 +10,7 @@
 - fless: 100MHz 1clock
 
 - fadd_200 215MHz 2clock
+- fmul_200 201MHz 2clock
 
 
 # Utilization (KCU105)
