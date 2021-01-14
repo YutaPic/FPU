@@ -12,6 +12,7 @@
 - fadd_200 215MHz 2clock
 - fmul_200 201MHz 2clock
 - fdiv_200 210MHz 4clock
+- fsqrt_200 250MHz 3clock
 
 
 # Utilization (KCU105)
