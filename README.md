@@ -10,7 +10,7 @@
 - fless: 100MHz 1clock
 
 - fadd_200 215MHz 2clock
-- fmul_200 201MHz 2clock
+- fmul 207MHz 2clock
 - fdiv_200 210MHz 4clock
 - fsqrt_200 250MHz 3clock
 
