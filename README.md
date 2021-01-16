@@ -13,6 +13,7 @@
 - fmul 207MHz 2clock
 - fdiv_200 210MHz 4clock
 - fsqrt_200 250MHz 3clock
+- ftoi 226MHz 1clock
 
 
 # Utilization (KCU105)
