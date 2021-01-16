@@ -15,6 +15,7 @@
 - fsqrt_200 250MHz 3clock
 - ftoi 226MHz 1clock
 - itof 206MHz 1clock
+- floor 225MHz 1clock
 
 
 # Utilization (KCU105)
