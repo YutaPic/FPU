@@ -23,9 +23,9 @@
 module fpu(
     input wire clk, rst,
     input wire [31:0] arg1, arg2,
-    input wire [2:0] fpucontrol,//•Û
-    input wire fpu_ready,//ŒvZ‚Ì1clock‘O
-    output reg fpu_valid,//ŒvZ‚Ì1clockŒã
+    input wire [2:0] fpucontrol,//â€¢Ã›Å½Â
+    input wire fpu_ready,//Å’vÅ½Zâ€šÃŒ1clockâ€˜O
+    output reg fpu_valid,//Å’vÅ½Zâ€šÃŒ1clockÅ’Ã£
     output reg [31:0] fpuout
     );
     wire ovf;//unused
@@ -78,7 +78,7 @@ module fpu(
         if (wait3) begin
             if (fpucontrol == 3'b011) begin
                 fpu_valid <= 1;
-                fpuout <= fsqrt_rs;
+                fpuout <= fdiv_rs;
             end
         end
            
