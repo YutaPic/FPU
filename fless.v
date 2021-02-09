@@ -1,4 +1,3 @@
-`timescale 1ns / 1ps
 `default_nettype none
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
@@ -45,5 +44,18 @@ module fless(
     (sel_s == 3 && e_a < e_b) ? 1 :
     (sel_s == 2 && e_a == e_b && m_a > m_b) ? 1 :
     (sel_s == 3 && e_a == e_b && m_a < m_b) ? 1 : 0;
+endmodule
+
+
+module feq(
+    input wire [31:0] a,
+    input wire [31:0] b,
+    output wire c
+    );
+    assign c = 
+    (a == 32'h80000000 && b == 32'h00000000) ? 1 :
+    (a == 32'h00000000 && b == 32'h80000000) ? 1 :
+    a == b ? 1 :
+    0;
 endmodule
 `default_nettype wire
