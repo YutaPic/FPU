@@ -21,15 +21,14 @@ module fdiv_200 (
     input wire clk, 
     input wire [31:0] a,
     input wire [31:0] b,
-    output wire [31:0] q,
-    output wire ovf);
+    output wire [31:0] q);
     
     wire [31:0] bi;
     reg [31:0] areg [2:0];
     reg [31:0] bireg;
 
     finv_200 u1(clk, b, bi);
-    fmul_for_fdiv u2(areg[2], bireg, q, ovf);
+    fmul_for_fdiv_300 u2(clk, areg[2], bireg, q);
     
     initial begin
         areg[0] <= 0;
